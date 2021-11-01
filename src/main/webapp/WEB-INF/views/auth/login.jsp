@@ -21,15 +21,15 @@
     <div class="col d-flex justify-content-center flex-nowrap">
         <form method="post">
             <div class="form-group">
-                <label for="inputEmail">Email address</label>
+                <label for="inputEmail">Email</label>
                 <input type="email" class="form-control" id="inputEmail" name="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" required>
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
-                <label for="inputPassword">Password</label>
+                <label for="inputPassword">Mot de passe</label>
                 <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Connexion</button>
             <%
 
                 if(request.getAttribute("errorMessage") != null){

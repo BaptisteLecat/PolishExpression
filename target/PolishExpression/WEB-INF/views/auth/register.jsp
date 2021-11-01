@@ -15,21 +15,29 @@
     <title>SGP - App</title>
 </head>
 <body>
-<h1>La page de login</h1>
+<h1>La page de register</h1>
 
 <div class="container h-100">
     <div class="col d-flex justify-content-center flex-nowrap">
         <form method="post">
             <div class="form-group">
+                <label for="inputName">Nom</label>
+                <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Nom" required>
+            </div>
+            <div class="form-group">
+                <label for="inputFirstName">Prénom</label>
+                <input type="text" class="form-control" id="inputFirstName" name="inputFirstName" placeholder="Prénom" required>
+            </div>
+            <div class="form-group">
                 <label for="inputEmail">Email</label>
-                <input type="email" class="form-control" id="inputEmail" name="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" required>
+                <input type="email" class="form-control" id="inputEmail" name="inputEmail" aria-describedby="emailHelp" placeholder="Email" required>
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
                 <label for="inputPassword">Mot de passe</label>
-                <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Password" required>
+                <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Mot de passe" required>
             </div>
-            <button type="submit" class="btn btn-primary">Connexion</button>
+            <button type="submit" class="btn btn-primary">Enregistrement</button>
             <%
 
                 if(request.getAttribute("errorMessage") != null){
