@@ -1,10 +1,16 @@
 package web.controller;
 
+import utils.PostChecker;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class LoginController extends HttpServlet {
     @Override
@@ -17,27 +23,24 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws
             ServletException, IOException {
 
-        PostChecker
+        Map<String, String> fields = new HashMap<String, String>();
+        fields.put("inputEmail", req.getParameter("inputEmail"));
+        fields.put("inputPassword", req.getParameter("inputPassword"));
 
-        req.getRequestDispatcher("/WEB-INF/views/auth/login.jsp")
-                .forward(req, resp);
-    }
-}
-
-/*
-
-package utils;
-
-public static class PostChecker {
-
-    public static List<String> checkPostData(Map<String, String> postData){
-        List<String> errorParam = new ArrayList();
-        postData.forEach((name, value) -> {
-            if(value == null || value.equals("")){
-                errorParam.add(name);
+        List<String> errorParams = PostChecker.checkPostData(fields);
+        if(errorParams.isEmpty()){
+            if(PostChecker.isValidEmailAddress(fields.get("inputEmail"))){
+                req.getRequestDispatcher("/WEB-INF/views/home.jsp")
+                        .forward(req, resp);
+            }else{
+                req.setAttribute("errorMessage", "Le format de l'email est incorrect");
+                req.getRequestDispatcher("/WEB-INF/views/auth/login.jsp")
+                        .forward(req, resp);
             }
-        });
-        return errorParam;
+        }else{
+            req.setAttribute("errorMessage", PostChecker.setErrorMessage(errorParams));
+            req.getRequestDispatcher("/WEB-INF/views/auth/login.jsp")
+                    .forward(req, resp);
+        }
     }
 }
- */
