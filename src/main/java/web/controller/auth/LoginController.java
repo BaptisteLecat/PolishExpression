@@ -1,11 +1,13 @@
 package web.controller.auth;
 
+import repository.Auth;
 import utils.PostChecker;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,8 +32,20 @@ public class LoginController extends HttpServlet {
         List<String> errorParams = PostChecker.checkPostData(fields);
         if(errorParams.isEmpty()){
             if(PostChecker.isValidEmailAddress(fields.get("inputEmail"))){
-                req.getRequestDispatcher("/WEB-INF/views/home.jsp")
-                        .forward(req, resp);
+                Auth auth = new Auth();
+                Object data = auth.login(fields.get("inputEmail"), fields.get("inputPassword"));
+                if(data instanceof Integer){
+                    int idUser = (int) data;
+                    // Récupérer la session existante ou création d'une session
+                    HttpSession session = req.getSession(true);
+                    session.setAttribute("idUser", idUser);
+                    req.getRequestDispatcher("/WEB-INF/views/home.jsp")
+                            .forward(req, resp);
+                }else{
+                    req.setAttribute("errorMessage", "Identifiants incorrects.");
+                    req.getRequestDispatcher("/WEB-INF/views/auth/login.jsp")
+                            .forward(req, resp);
+                }
             }else{
                 req.setAttribute("errorMessage", "Le format de l'email est incorrect");
                 req.getRequestDispatcher("/WEB-INF/views/auth/login.jsp")
