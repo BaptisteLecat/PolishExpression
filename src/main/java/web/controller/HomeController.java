@@ -19,10 +19,10 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws
             ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/views/home.jsp")
-                .forward(req, resp);
         LeaderBoard leaderboardRepository = new LeaderBoard();
         List<entity.LeaderBoard> data = leaderboardRepository.getLeaderBoardList();
         req.setAttribute("listLeaderBoard", data);
+        req.getRequestDispatcher("/WEB-INF/views/home.jsp")
+                .forward(req, resp);
     }
 }

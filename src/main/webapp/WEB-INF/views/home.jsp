@@ -15,33 +15,40 @@
     <title>SGP - App</title>
 </head>
 <body>
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nom</th>
-        <th scope="col">Prénom</th>
-        <th scope="col">Score</th>
-    </tr>
-    </thead>
-    <tbody>
-    <%
 
-        if(request.getAttribute("errorMessage") != null){
-            List<entity.LeaderBoard> listLeaderBoard =(List<entity.LeaderBoard>)request.getAttribute("errorMessage");
-     for (entity.LeaderBoard leaderBoard: listLeaderBoard)
-    { %>
+<div class="container">
+    <button type="button" class="btn btn-primary btn-lg">Lancer une partie</button>
+</div>
 
-    <tr>
-        <th scope="row">1</th>
-        <td><%= leaderBoard.getUser().getName() %></td>
-        <td><%= leaderBoard.getUser().getFirstName() %></td>
-        <td><%= leaderBoard.getScore() %></td>
-    </tr>
-    <% }
-    }
-    %>
-    </tbody>
-</table>
+<div class="container-md">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Score</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%
+
+            if(request.getAttribute("listLeaderBoard") != null){
+                List<entity.LeaderBoard> listLeaderBoard =(List<entity.LeaderBoard>)request.getAttribute("listLeaderBoard");
+                for (entity.LeaderBoard leaderBoard: listLeaderBoard)
+                { %>
+
+        <tr>
+            <th scope="row">1</th>
+            <td><%= leaderBoard.getUser().getName() %></td>
+            <td><%= leaderBoard.getUser().getFirstName() %></td>
+            <td><%= leaderBoard.getScore() %></td>
+        </tr>
+        <% }
+        }
+        %>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

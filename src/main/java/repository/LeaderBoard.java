@@ -16,7 +16,7 @@ public class LeaderBoard {
         try{
             ResultSet data = null;
             PreparedStatement request =
-                    Connector.getConnexion().prepareStatement("SELECT leaderboard.id AS leaderboard_id, leaderboard.date, leaderboard.score, user.id, user.name, user.firstname, user.email FROM leaderboard, user WHERE user.id = leaderboard.user_id LIMIT 20");
+                    Connector.getConnexion().prepareStatement("SELECT leaderboard.id AS leaderboard_id, leaderboard.date, leaderboard.score, user.id, user.name, user.firstname, user.email FROM leaderboard, user WHERE user.id = leaderboard.user_id ORDER BY leaderboard.score DESC LIMIT 20");
 
             data = request.executeQuery();
             while(data.next()){
