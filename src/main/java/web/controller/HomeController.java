@@ -1,6 +1,7 @@
 package web.controller;
 
 import repository.Auth;
+import repository.LeaderBoard;
 import utils.PostChecker;
 
 import javax.servlet.ServletException;
@@ -20,5 +21,8 @@ public class HomeController extends HttpServlet {
             ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/views/home.jsp")
                 .forward(req, resp);
+        LeaderBoard leaderboardRepository = new LeaderBoard();
+        List<entity.LeaderBoard> data = leaderboardRepository.getLeaderBoardList();
+        req.setAttribute("listLeaderBoard", data);
     }
 }

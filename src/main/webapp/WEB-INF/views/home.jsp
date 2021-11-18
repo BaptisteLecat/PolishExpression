@@ -25,24 +25,22 @@
     </tr>
     </thead>
     <tbody>
+    <%
+
+        if(request.getAttribute("errorMessage") != null){
+            List<entity.LeaderBoard> listLeaderBoard =(List<entity.LeaderBoard>)request.getAttribute("errorMessage");
+     for (entity.LeaderBoard leaderBoard: listLeaderBoard)
+    { %>
+
     <tr>
         <th scope="row">1</th>
-        <td>Lecat</td>
-        <td>Baptiste</td>
-        <td>@mdo</td>
+        <td><%= leaderBoard.getUser().getName() %></td>
+        <td><%= leaderBoard.getUser().getFirstName() %></td>
+        <td><%= leaderBoard.getScore() %></td>
     </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-    </tr>
+    <% }
+    }
+    %>
     </tbody>
 </table>
 </body>
