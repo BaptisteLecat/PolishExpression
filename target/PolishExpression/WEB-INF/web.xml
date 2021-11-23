@@ -42,4 +42,13 @@
     <url-pattern>/home</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>ProfilController</servlet-name>
+    <servlet-class>web.controller.ProfilController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProfilController</servlet-name>
+    <url-pattern>/profil</url-pattern>
+  </servlet-mapping>
+
 </web-app>
