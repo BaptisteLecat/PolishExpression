@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by BaptisteLecat
+ * Created by BaptisteLecat & FxPelet
  */
 public class LeaderBoard {
 

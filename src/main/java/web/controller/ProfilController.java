@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by BaptisteLecat
+ * Created by BaptisteLecat & FxPelet
  */
 public class ProfilController extends HttpServlet {
 
