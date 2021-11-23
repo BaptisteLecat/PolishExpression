@@ -1,5 +1,8 @@
 package entity;
 
+/**
+ * Created by BaptisteLecat
+ */
 public class User {
     private int id;
     private String name;

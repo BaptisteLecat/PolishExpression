@@ -14,6 +14,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Created by BaptisteLecat
+ */
 public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws
@@ -33,14 +36,14 @@ public class LoginController extends HttpServlet {
         if(errorParams.isEmpty()){
             if(PostChecker.isValidEmailAddress(fields.get("inputEmail"))){
                 Auth auth = new Auth();
-                Object data = auth.login(fields.get("inputEmail"), fields.get("inputPassword"));
+                String sha256hex = org.apache.commons.codec.digest.DigestUtils.sha256Hex(fields.get("inputPassword"));
+                Object data = auth.login(fields.get("inputEmail"), sha256hex);
                 if(data instanceof Integer){
                     int idUser = (int) data;
                     // Récupérer la session existante ou création d'une session
                     HttpSession session = req.getSession(true);
                     session.setAttribute("idUser", idUser);
-                    req.getRequestDispatcher("/WEB-INF/views/home.jsp")
-                            .forward(req, resp);
+                    resp.sendRedirect("home");
                 }else{
                     req.setAttribute("errorMessage", "Identifiants incorrects.");
                     req.getRequestDispatcher("/WEB-INF/views/auth/login.jsp")

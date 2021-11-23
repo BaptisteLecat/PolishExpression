@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Created by BaptisteLecat
+ */
 public class PostChecker {
 
     public static List<String> checkPostData(Map<String, String> postData){
