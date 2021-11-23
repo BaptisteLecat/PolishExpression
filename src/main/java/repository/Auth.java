@@ -1,6 +1,7 @@
 package repository;
 
 import database.Connector;
+import entity.User;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,12 +24,51 @@ public class Auth {
 
             data = request.executeQuery();
             while(data.next()){
-                idUser = data.getObject("id");
+                idUser = data.getInt("id");
             }
         }catch (SQLException e){
             System.out.println(e);
         }
 
         return idUser;
+    }
+
+    public boolean register(String name, String firstname, String email, String password){
+        boolean success = false;
+        try{
+            ResultSet data = null;
+            PreparedStatement request =
+                    Connector.getConnexion().prepareStatement("INSERT INTO user (name, firstname, email, password) VALUES (?, ?, ?, ?)");
+            request.setString(1, name);
+            request.setString(2, firstname);
+            request.setString(3, email);
+            request.setString(4, password);
+
+            data = request.executeQuery();
+            success = true;
+        }catch (SQLException e){
+            System.out.println(e);
+        }
+
+        return success;
+    }
+
+    public User whoAmI(int userId){
+        User user = null;
+        try{
+            ResultSet data = null;
+            PreparedStatement request =
+                    Connector.getConnexion().prepareStatement("SELECT * FROM user WHERE id = ?");
+            request.setInt(1, userId);
+
+            data = request.executeQuery();
+            while(data.next()){
+                user = new User(data.getInt("id"), data.getNString("name"), data.getNString("firstname"), data.getNString("email"));
+            }
+        }catch (SQLException e){
+            System.out.println(e);
+        }
+
+        return user;
     }
 }
