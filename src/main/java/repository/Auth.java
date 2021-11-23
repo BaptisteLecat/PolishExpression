@@ -7,6 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Created by BaptisteLecat
+ */
 public class Auth {
 
     public Object login(String email, String password){

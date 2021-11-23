@@ -9,6 +9,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by BaptisteLecat
+ */
 public class LeaderBoard {
 
     public List<entity.LeaderBoard> getLeaderBoardList(){

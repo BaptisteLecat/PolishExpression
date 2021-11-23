@@ -2,6 +2,9 @@ package entity;
 
 import java.util.Date;
 
+/**
+ * Created by BaptisteLecat
+ */
 public class LeaderBoard {
     private int id;
     private User user;
