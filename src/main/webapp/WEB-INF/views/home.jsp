@@ -35,14 +35,18 @@
 
             if(request.getAttribute("listLeaderBoard") != null){
                 List<entity.LeaderBoard> listLeaderBoard =(List<entity.LeaderBoard>)request.getAttribute("listLeaderBoard");
+                int index = 0;
                 for (entity.LeaderBoard leaderBoard: listLeaderBoard)
-                { %>
+                {
+                    index++;
+        %>
 
         <tr>
-            <th scope="row">1</th>
+            <th scope="row"><%= index %></th>
             <td><%= leaderBoard.getUser().getName() %></td>
             <td><%= leaderBoard.getUser().getFirstName() %></td>
             <td><%= leaderBoard.getScore() %></td>
+            <td><button type="button" class="btn btn-primary" onclick='window.location.href = "profil?userId=<%= leaderBoard.getUser().getId() %>";'>Primary</button></td>
         </tr>
         <% }
         }
