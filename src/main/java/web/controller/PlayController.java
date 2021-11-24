@@ -44,12 +44,17 @@ public class PlayController extends HttpServlet {
             //String[] polishExpression = polishExpression1.split("(?!^)");
             //int a = polishExpression1.length();
             //String[] polishExpression = polishExpression1.split("(?!^)");
+        //String polishExpression1 = request.getParameter("polishExpression");
+        //String[] polishExpression = polishExpression1.split("(?!^)");
+
+
+
+            //Récupérer le même polishExpression qui est affiché pour l'utilisateur afin de le traiter
             GetRandomPolishExpression myExpression = new GetRandomPolishExpression();
             String[] polishExpression = myExpression.getExpression();
 
             request.setAttribute("polishExpression", String.join(" ", polishExpression));
-            //String polishExpression1 = request.getParameter("polishExpression");
-            //String[] polishExpression = polishExpression1.split("(?!^)");
+
 
             GetRandomPolishExpression result = new GetRandomPolishExpression();
             String resultatCalcul = result.calculPolish(polishExpression);
