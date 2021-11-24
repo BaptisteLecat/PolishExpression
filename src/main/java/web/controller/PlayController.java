@@ -13,6 +13,7 @@ public class PlayController extends HttpServlet {
 
         private int countCalcul = 0;
         private int goodResponse = 0;
+        private String[] polishExpression;
 
         @Override
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
@@ -24,7 +25,7 @@ public class PlayController extends HttpServlet {
             //polishExpression.setPolishExpression();
 
             GetRandomPolishExpression myExpression = new GetRandomPolishExpression();
-            String[] polishExpression = myExpression.getExpression();
+            polishExpression = myExpression.getExpression();
 
             request.setAttribute("polishExpression", String.join(" ", polishExpression));
             //Object data = "Some data, can be a String or a Javabean";
@@ -37,23 +38,18 @@ public class PlayController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)throws
             ServletException, IOException {
-            Object myValue = request.getParameter("inputResultat");
+            Object myValue1 = request.getParameter("inputResultat");
+            String myValue = String.valueOf(myValue1);
 
             //Object polishExpression2 = request.getAttribute("polishExpression");
             //String polishExpression1 = String.valueOf(polishExpression2);
             //String[] polishExpression = polishExpression1.split("(?!^)");
             //int a = polishExpression1.length();
             //String[] polishExpression = polishExpression1.split("(?!^)");
-        //String polishExpression1 = request.getParameter("polishExpression");
-        //String[] polishExpression = polishExpression1.split("(?!^)");
-
-
+            //String polishExpression1 = request.getParameter("polishExpression");
+            //String[] polishExpression = polishExpression1.split("(?!^)");
 
             //Récupérer le même polishExpression qui est affiché pour l'utilisateur afin de le traiter
-            GetRandomPolishExpression myExpression = new GetRandomPolishExpression();
-            String[] polishExpression = myExpression.getExpression();
-
-            request.setAttribute("polishExpression", String.join(" ", polishExpression));
 
 
             GetRandomPolishExpression result = new GetRandomPolishExpression();
@@ -64,7 +60,7 @@ public class PlayController extends HttpServlet {
             countCalcul++;
 
             //traitement du résultat
-            if(myValue == resultatCalcul){
+            if(myValue.equals(resultatCalcul)){
                 goodResponse++;
             }
 

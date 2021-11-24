@@ -9,7 +9,7 @@ public class Operators {
         ArrayList<String> operators = new ArrayList<String>();
         operators.add("-");
         operators.add("+");
-        operators.add("*");
+        operators.add("/");
         operators.add("*");
         return operators;
 
