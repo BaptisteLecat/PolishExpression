@@ -39,19 +39,38 @@ public class PlayController extends HttpServlet {
             ServletException, IOException {
             Object myValue = request.getParameter("inputResultat");
 
+            //Object polishExpression2 = request.getAttribute("polishExpression");
+            //String polishExpression1 = String.valueOf(polishExpression2);
+            //String[] polishExpression = polishExpression1.split("(?!^)");
+            //int a = polishExpression1.length();
+            //String[] polishExpression = polishExpression1.split("(?!^)");
+            GetRandomPolishExpression myExpression = new GetRandomPolishExpression();
+            String[] polishExpression = myExpression.getExpression();
+
+            request.setAttribute("polishExpression", String.join(" ", polishExpression));
+            //String polishExpression1 = request.getParameter("polishExpression");
+            //String[] polishExpression = polishExpression1.split("(?!^)");
+
+            GetRandomPolishExpression result = new GetRandomPolishExpression();
+            String resultatCalcul = result.calculPolish(polishExpression);
+            request.setAttribute("resultatCalcul", resultatCalcul);
+
             //gestion de la boucle
             countCalcul++;
 
             //traitement du résultat
-            if(myValue == calculPolish()){
-
+            if(myValue == resultatCalcul){
+                goodResponse++;
             }
 
              if(countCalcul < 10) {
                  //rappel de la page
                  doGet(request, response);
              }else{
+                 request.setAttribute("goodResponse", goodResponse);
 
+                 request.getRequestDispatcher("/WEB-INF/views/play.jsp")
+                         .forward(request, response);
              }
 
 

@@ -71,7 +71,8 @@ public class GetRandomPolishExpression {
                     break;
             }
         }
-        return stackPolish.peek();
+        String resultatCalcul = stackPolish.peek();
+        return resultatCalcul;
     }
 
 

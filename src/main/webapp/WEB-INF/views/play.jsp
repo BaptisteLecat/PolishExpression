@@ -35,7 +35,9 @@
     </form>
 
     <div >
-        <p>Resultat</p>
+        <p>Bravo vous avez répondu à toutes les questions, voici votre score :
+        <%= request.getAttribute("goodResponse")%>
+        </p>
     </div>
 
 </body>
