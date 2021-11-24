@@ -68,10 +68,11 @@ public class PlayController extends HttpServlet {
                  //rappel de la page
                  doGet(request, response);
              }else{
+                 //out.print("Bravo vous avez terminer l'épreuve de calcul voici votre score : " + goodResponse + "/10");
                  request.setAttribute("goodResponse", goodResponse);
 
                  request.getRequestDispatcher("/WEB-INF/views/play.jsp")
-                         .forward(request, response);
+                       .forward(request, response);
              }
 
 
