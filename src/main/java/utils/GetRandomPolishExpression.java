@@ -81,6 +81,32 @@ public class GetRandomPolishExpression {
             }
             return checkIfWorks;
         }
+        String resultatCalcul = stackPolish.peek();
+        return resultatCalcul;
+    }
+
+
+    static boolean checkIfDividerWorks(String[] expression) {
+        Stack<String> stackValue = new Stack<String>();
+        boolean checkIfWorks = false;
+        for(String val: expression){
+            //check if divide is possible
+            if(Operators.isDivider(val)&&Integer.parseInt(stackValue.peek())!=0){
+                checkIfWorks = true;
+            }
+            else{
+                stackValue.push(val);
+            }
+        }
+        return checkIfWorks;
+    }
+
+
+    public void setPolishExpression() {
+        this.polishExpression = polishExpression;
+    }
+
+
 
 /*
 check si nombre
