@@ -12,7 +12,7 @@
   </session-config>
 
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>/WEB-INF/views/home.jsp</welcome-file>
   </welcome-file-list>
 
   <servlet>

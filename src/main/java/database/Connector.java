@@ -13,7 +13,7 @@ public class Connector {
         Connection con = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-             con = DriverManager.getConnection("jdbc:mysql://localhost/polishexpression","root","");
+             con = DriverManager.getConnection("jdbc:mysql://mysql-polish.alwaysdata.net/polish_bdd","polish","epsi2021");
         } catch (SQLException e) {
             //traitement de l'exception
             System.out.println(e);
