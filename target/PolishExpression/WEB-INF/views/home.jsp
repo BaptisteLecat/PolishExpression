@@ -17,7 +17,7 @@
 <body>
 
 <div class="container">
-    <button type="button" class="btn btn-primary btn-lg">Lancer une partie</button>
+    <button type="button" class="btn btn-primary btn-lg" onclick='window.location.href = "play";'>Lancer une partie</button>
 </div>
 
 <div class="container-md">

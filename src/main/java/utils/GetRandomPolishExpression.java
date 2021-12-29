@@ -67,7 +67,7 @@ public class GetRandomPolishExpression {
         }
         return stackPolish.peek();
     }
-        static boolean checkIfDividerWorks(String[] expression) {
+      /* static boolean checkIfDividerWorks(String[] expression) {
             Stack<String> stackValue = new Stack<String>();
             boolean checkIfWorks = false;
             for(String val: expression){
@@ -83,7 +83,7 @@ public class GetRandomPolishExpression {
         }
         String resultatCalcul = stackPolish.peek();
         return resultatCalcul;
-    }
+    }*/
 
 
     static boolean checkIfDividerWorks(String[] expression) {
@@ -102,9 +102,9 @@ public class GetRandomPolishExpression {
     }
 
 
-    public void setPolishExpression() {
+    /*public void setPolishExpression() {
         this.polishExpression = polishExpression;
-    }
+    }*/
 
 
 
