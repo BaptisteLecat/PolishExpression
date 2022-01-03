@@ -37,7 +37,7 @@ Page de Jeux
 
 ### Sécurité
 
-Pour accéder au pages du site il est nécessaire d'être authentifier, pour ce faire chaque controller dispose d'une fonction : isAuthenticated
+Pour accéder aux pages du site il est nécessaire d'être authentifié, pour ce faire chaque controller dispose d'une fonction : isAuthenticated
 
     private boolean isAuthenticated(HttpServletRequest req){
         boolean isAuthenticated = false;
@@ -63,4 +63,5 @@ Les mots de passes sont hasher en SHA256.
 La connection base de donnée n'est pas possible en distant avec la configuration actuelle de TomCat.
 C'est pourquoi vous trouverez à la racine un fichier SQL contenant le script de la base de données.
 Si nécessaire il est possible de modifier les identifiants de connection dans le fichier Connector du dossier Database.
- 
+
+Nom de la base de donnée : **polish_bdd**
