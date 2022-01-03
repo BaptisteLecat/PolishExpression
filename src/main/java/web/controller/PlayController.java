@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class PlayController extends HttpServlet {
 
-    private int countCalcul = 1;
+    private int countCalcul = 0;
     private int goodResponse = 0;
     private String[] polishExpression;
 
@@ -23,7 +23,11 @@ public class PlayController extends HttpServlet {
 
         //GetRandomPolishExpression polishExpression = new utils.GetRandomPolishExpression();
         //polishExpression.setPolishExpression();
+        if(countCalcul > 10){
+            countCalcul = 0;
+            goodResponse = 0;
 
+        }
         GetRandomPolishExpression myExpression = new GetRandomPolishExpression();
         polishExpression = myExpression.getExpression();
 
@@ -60,7 +64,10 @@ public class PlayController extends HttpServlet {
         System.out.println("#DEBUG: value = " + myValue);
         System.out.println("#DEBUG: turn = " + countCalcul);
 
-        if(countCalcul <= 10){
+        if(countCalcul < 10){
+            GetRandomPolishExpression myExpression = new GetRandomPolishExpression();
+            this.polishExpression = myExpression.getExpression();
+            request.setAttribute("polishExpression", String.join(" ", this.polishExpression));
             countCalcul++;
             if (myValue.equals(resultatCalcul)) {
                 goodResponse++;
@@ -68,10 +75,14 @@ public class PlayController extends HttpServlet {
                 System.out.println("#DEBUG: goodResponseBoucle = " + goodResponse);
                 System.out.println("#DEBUG: resCalcBoucle = " + resultatCalcul);
 
-            }else{
-
             }
         }
+        else{
+            //réanistialisation valeur
+            countCalcul = 0;
+            goodResponse = 0;
+        }
+
         
         request.setAttribute("turn", countCalcul);
         request.setAttribute("goodResponse", goodResponse);

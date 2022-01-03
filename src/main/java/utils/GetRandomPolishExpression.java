@@ -22,15 +22,19 @@ public class GetRandomPolishExpression {
         Stack<String> stackPolish = new Stack<String>();
         for(String val : polishExpression){
             int calcul;
+
             switch(val) {
                 case "+":
+
                     calcul = Integer.parseInt(stackPolish.pop()) + Integer.parseInt(stackPolish.pop());
                     res = Integer.toString(calcul);
                     stackPolish.push(res);
                     break;
 
                 case "-":
-                    calcul = Integer.parseInt(stackPolish.pop()) - Integer.parseInt(stackPolish.pop());
+                    int val1= Integer.parseInt(stackPolish.pop());
+                    int val2= Integer.parseInt(stackPolish.pop());
+                    calcul = val2 - val1;
                     if (calcul <0){
                         res = "-"+ Integer.toString(calcul);
                     }
@@ -41,18 +45,32 @@ public class GetRandomPolishExpression {
 
                 case "/":
                     if(checkIfDividerWorks(polishExpression)){
-                        calcul = Integer.parseInt(stackPolish.pop()) / Integer.parseInt(stackPolish.pop());
-                        res = Integer.toString(calcul);
-                        stackPolish.push(res);
+                        float val3= Integer.parseInt(stackPolish.pop());
+                        float val4= Integer.parseInt(stackPolish.pop());
+                        float calculD;
+                        if(val3!=0 && val4!=0){
+                            calculD = val4 / val3;
+
+                            res = Float.toString(calculD);
+                            stackPolish.push(res);
+                        }
+                      else{
+                            //remplacer expression error par new expression
+                            polishExpression = getExpression();
+                            calculPolish(polishExpression);
+                            System.out.println("génération new calc 1");
+                            //res = Integer.toString(calcul);
+                            //stackPolish.push(res);
+                        }
                     }
                     else{
                         //remplacer expression error par new expression
                         polishExpression = getExpression();
-                        calcul = Integer.parseInt(stackPolish.pop()) / Integer.parseInt(stackPolish.pop());
-                        res = Integer.toString(calcul);
-                        stackPolish.push(res);
-
-
+                        calculPolish(polishExpression);
+                        System.out.println("génération new calc 2");
+                        //calcul = Integer.parseInt(stackPolish.pop()) / Integer.parseInt(stackPolish.pop());
+                       // res = Integer.toString(calcul);
+                      //  stackPolish.push(res);
                     }
 
 
@@ -97,6 +115,9 @@ public class GetRandomPolishExpression {
             //check if divide is possible
             if(Operators.isDivider(val)&&Integer.parseInt(stackValue.peek())!=0){
                 checkIfWorks = true;
+            }
+            if(val=="0"){
+                checkIfWorks = false;
             }
             else{
                 stackValue.push(val);

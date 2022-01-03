@@ -31,27 +31,27 @@
                         <p>Bravo vous avez répondu à toutes les questions, voici votre score :
                             <%= goodResponse %> /10</p>
                     </div>
+                    <button type="submit" class="btn btn-primary" id="homeId" onclick='window.location.href = "home";'>Hall of Shame</button>
                 <%}else{
                     if(request.getAttribute("polishExpression") != null){
-                    int polishExpression =(String)request.getAttribute("polishExpression");%>
+                    String polishExpression =(String)request.getAttribute("polishExpression");%>
                         <div>
                             <p>Entrer la valeur de l'expression suivante : <%= polishExpression %></p>
                         </div>
                         <form action="<%=request.getContextPath()%>/play" method="post">
                             <div class="form-group">
                                 <label for="inputResultat">Entrer le résultat</label>
-                                <input type="number" class="form-control" id="inputResultat" name="inputResultat" placeholder="Résultat" required>
+                                <input type="number" step="0.01" class="form-control" id="inputResultat" name="inputResultat" placeholder="Résultat" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Envoyer</button>
+                            <button type="submit" class="btn btn-primary" >Envoyer</button>
                         </form>
-                    <%}else{%>
+                    <%}%>
                         <div>
                             <p> Vous avez répondu à <%= turn %> expression polonaise sur 10.</p>
                         </div>
-                    <%}
-            }else{%>
-                <p>Une erreur est survenue : polishExpression</p>
-            <%}
+
+                    <%
+            }
         }else{%>
             <p>Une erreur est survenue : goodResponse</p>
         <%}

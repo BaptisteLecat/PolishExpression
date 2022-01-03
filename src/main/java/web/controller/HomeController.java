@@ -30,6 +30,8 @@ public class HomeController extends HttpServlet {
             Auth authRepository = new Auth();
             User user = authRepository.whoAmI(idUser);
             isAuthenticated = true;
+            System.out.println(authRepository.whoAmI(idUser));
+
         } catch (Exception e) {
             return false;
         }
@@ -49,4 +51,5 @@ public class HomeController extends HttpServlet {
             resp.sendRedirect("login");
         }
     }
+
 }
