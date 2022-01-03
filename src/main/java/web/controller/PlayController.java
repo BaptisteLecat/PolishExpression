@@ -30,7 +30,8 @@ public class PlayController extends HttpServlet {
         request.setAttribute("polishExpression", String.join(" ", polishExpression));
         //Object data = "Some data, can be a String or a Javabean";
         //request.setAttribute("data", "test");
-
+        request.setAttribute("turn", countCalcul);
+        request.setAttribute("goodResponse", goodResponse);
         request.getRequestDispatcher("/WEB-INF/views/play.jsp")
                 .forward(request, response);
     }
@@ -55,47 +56,26 @@ public class PlayController extends HttpServlet {
         GetRandomPolishExpression result = new GetRandomPolishExpression();
         String resultatCalcul = result.calculPolish(polishExpression);
         System.out.println("#DEBUG: resultat = " + resultatCalcul);
-        request.setAttribute("resultatCalcul", resultatCalcul);
+        //request.setAttribute("resultatCalcul", resultatCalcul);
         System.out.println("#DEBUG: value = " + myValue);
         System.out.println("#DEBUG: turn = " + countCalcul);
 
+        if(countCalcul <= 10){
+            countCalcul++;
+            if (myValue.equals(resultatCalcul)) {
+                goodResponse++;
+                System.out.println("#DEBUG: valueBoucle = " + myValue);
+                System.out.println("#DEBUG: goodResponseBoucle = " + goodResponse);
+                System.out.println("#DEBUG: resCalcBoucle = " + resultatCalcul);
 
+            }else{
 
-        //gestion de la boucle
-        countCalcul++;
-        if (myValue.equals(resultatCalcul)) {
-            goodResponse++;
-            request.setAttribute("turn", countCalcul);
-            System.out.println("#DEBUG: valueBoucle = " + myValue);
-            System.out.println("#DEBUG: goodResponseBoucle = " + goodResponse);
-            System.out.println("#DEBUG: resCalcBoucle = " + resultatCalcul);
-
+            }
         }
-        if (!myValue.equals(resultatCalcul)) {
-            //rappel de la page
-
-            doGet(request, response);
-            request.setAttribute("turn", countCalcul);
-            request.getRequestDispatcher("/WEB-INF/views/play.jsp")
+        
+        request.setAttribute("turn", countCalcul);
+        request.setAttribute("goodResponse", goodResponse);
+        request.getRequestDispatcher("/WEB-INF/views/play.jsp")
                     .forward(request, response);
-            System.out.println("#DEBUG: countCalculBoucle = " + countCalcul);
-        }
-        if (countCalcul == 10) {
-            //out.print("Bravo vous avez terminer l'épreuve de calcul voici votre score : " + goodResponse + "/10");
-            request.setAttribute("goodResponse", goodResponse);
-            System.out.println("#DEBUG: goodResponseBoucle = " + goodResponse);
-
-            request.getRequestDispatcher("/WEB-INF/views/play.jsp")
-                    .forward(request, response);
-        } else {
-            request.setAttribute("turn", countCalcul);
-            request.getRequestDispatcher("/WEB-INF/views/play.jsp")
-                    .forward(request, response);
-            System.out.println("eeee");
-        }
-
-        //traitement du résultat
-
-
     }
 }
