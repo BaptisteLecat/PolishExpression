@@ -31,7 +31,11 @@ public class GetRandomPolishExpression {
 
                 case "-":
                     calcul = Integer.parseInt(stackPolish.pop()) - Integer.parseInt(stackPolish.pop());
+                    if (calcul <0){
+                        res = "-"+ Integer.toString(calcul);
+                    }
                     res = Integer.toString(calcul);
+
                     stackPolish.push(res);
                     break;
 

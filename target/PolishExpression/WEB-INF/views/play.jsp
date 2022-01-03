@@ -19,26 +19,38 @@
 </head>
 <body>
 <h1>Calcul mental</h1>
-    <div>
-        <p>Entrer la valeur de l'expression suivante :
-            <%= request.getAttribute("polishExpression") %>
-        </p>
 
-    </div>
-    <form action="<%=request.getContextPath()%>/play" method="post">
-        <div class="form-group">
-            <label for="inputResultat">Entrer le résultat</label>
-            <input type="number" class="form-control" id="inputResultat" name="inputResultat" placeholder="Résultat" required>
+    <%
+        int turn = 0;
+
+        if(turn==10)  {
+    %>
+        <div>
+            <p>Bravo vous avez répondu à toutes les questions, voici votre score :
+                <%= request.getAttribute("goodResponse")%> /10</p>
         </div>
+    <%
+        } else {
+    %>
+<div>
+    <p>Entrer la valeur de l'expression suivante :
+        <%= request.getAttribute("polishExpression") %>
+    </p>
 
-        <button type="submit"  class="btn btn-primary">Envoyer</button>
-    </form>
-
-    <div >
-        <p>Bravo vous avez répondu à toutes les questions, voici votre score :
-        <%= request.getAttribute("goodResponse")%>
-        /10 </p>
+</div>
+<form action="<%=request.getContextPath()%>/play" method="post">
+    <div class="form-group">
+        <label for="inputResultat">Entrer le résultat</label>
+        <input type="number" class="form-control" id="inputResultat" name="inputResultat" placeholder="Résultat" required>
     </div>
 
+    <button type="submit"  class="btn btn-primary">Envoyer</button>
+</form>
+        <div>
+            <p> Vous avez répondu à <%request.getAttribute("turn");%> expréssion polonaise sur 10</p>
+        </div>
+    <%
+    }
+    %>
 </body>
 </html>
