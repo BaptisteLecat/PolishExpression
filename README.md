@@ -2,6 +2,11 @@
 
 Projet réalisé par Baptiste Lecat - François-Xavier Pelet - Marty Bertrand.
 
+Utilisateur de test:
+
+- Email : test@email.fr
+- Mot de passe : test
+
 ## Fonctionnalités
 
 - Se connecter.
