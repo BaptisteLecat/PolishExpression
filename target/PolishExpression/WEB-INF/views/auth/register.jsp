@@ -37,6 +37,7 @@
                 <label for="inputPassword">Mot de passe</label>
                 <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Mot de passe" required>
             </div>
+            <p><a href="login">J'ai déjà un compte</a></p>
             <button type="submit" class="btn btn-primary">Enregistrement</button>
             <%
 

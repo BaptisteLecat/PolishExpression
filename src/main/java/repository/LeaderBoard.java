@@ -72,4 +72,20 @@ public class LeaderBoard {
 
         return listLeaderBoard;
     }
+
+    public boolean insertUserLeaderBoard(int userId, int score){
+        boolean success = false;
+        try{
+            PreparedStatement request =
+                    Connector.getConnexion().prepareStatement("INSERT INTO leaderboard (user_id, score) VALUES (?, ?)");
+            request.setInt(1, userId);
+            request.setInt(2, score);
+            request.executeUpdate();
+            success = true;
+        }catch (SQLException e){
+            System.out.println(e);
+        }
+
+        return success;
+    }
 }

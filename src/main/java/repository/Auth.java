@@ -43,6 +43,7 @@ public class Auth {
             request.setString(2, firstname);
             request.setString(3, email);
             request.setString(4, password);
+            request.executeUpdate();
             success = true;
         }catch (SQLException e){
             System.out.println(e);

@@ -46,7 +46,7 @@
             <td><%= leaderBoard.getUser().getName() %></td>
             <td><%= leaderBoard.getUser().getFirstName() %></td>
             <td><%= leaderBoard.getScore() %></td>
-            <td><button type="button" class="btn btn-primary" onclick='window.location.href = "profil?userId=<%= leaderBoard.getUser().getId() %>";'>Primary</button></td>
+            <td><button type="button" class="btn btn-primary" onclick='window.location.href = "profil?userId=<%= leaderBoard.getUser().getId() %>";'>Profil</button></td>
         </tr>
         <% }
         }
